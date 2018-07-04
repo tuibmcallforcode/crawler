@@ -23,8 +23,23 @@ Ken is going to craw some website ;)
 
 - [ ] https://reliefweb.int/updates 
 
-### How to run scrapy spider
+### How to run this project
 ```
-pip install scrapy
-scrapy runspider <filename.py>
+pip install beutifulsoup4
+python main.py
+```
+According to main.py example code 
+```
+ptwc.start_crawl(1) # 1 record
+```
+result will be only first record of the web page.
+
+**Example output** (*ptwc* website)
+```
+Time:    03 Jul 2018 12:24
+Region:  In the Summit Region of Kilauea Volcano
+Type:    Local Information Statement
+Details Link: /ptwc/text.php?id=hawaii.TIBHWX.2018.07.03.1224
+Evaluation:  NO TSUNAMI IS EXPECTED. REPEAT. NO TSUNAMI IS EXPECTED.
+-----------------
 ```
