@@ -9,6 +9,9 @@ def start_crawl(cnt = 28):
     landing_page = const.crawl_page(URL)
     data_rows = landing_page.findAll('tr', { "class": ["gr", "gr_even"] } )
     
+    print('PTWC (Pacific Tsunami Warning Center) (Past 30 days)')
+    print('URL:', URL)
+
     for idx, row in enumerate(data_rows):
         if(idx >= cnt):
             break
