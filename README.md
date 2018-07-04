@@ -5,7 +5,7 @@ Ken is going to craw some website ;)
 
 ### Website Check List
 
-- [ ] https://ptwc.weather.gov/
+- [x] https://ptwc.weather.gov/ **by N'Ken**
 - [ ] https://ec.europa.eu/echo/what/civil-protection/emergency-response-coordination-centre-ercc_en
 - [ ] https://www.fema.gov/
 - [ ] http://DFES.WA.GOV.AU
@@ -22,3 +22,9 @@ Ken is going to craw some website ;)
 ### api เกี่ยวกับ disaster
 
 - [ ] https://reliefweb.int/updates 
+
+### How to run scrapy spider
+```
+pip install scrapy
+scrapy runspider <filename.py>
+```
