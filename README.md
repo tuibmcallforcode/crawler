@@ -25,7 +25,7 @@ Ken is going to craw some website ;)
 
 ### How to run this project
 ```
-pip install beutifulsoup4
+pip install -r requirements.txt
 python main.py
 ```
 According to main.py example code 
