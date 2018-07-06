@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup as soup
 
 HEADERS = { 
@@ -32,3 +33,13 @@ def crawl_page(url):
     page = soup(response.content, "html5lib")
 
     return page
+
+def print_dict(datum_dict):
+    for key in datum_dict.keys():
+        print(key, '\t:\t', datum_dict[key])
+    print('-----------------')
+
+def write_json_file(website, dict_list):
+    with open('./data/'+website+'_data.json', 'w') as outfile:
+        json.dump(dict_list, outfile)
+    
