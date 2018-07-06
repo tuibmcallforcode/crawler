@@ -4,20 +4,20 @@
 Ken is going to craw some website ;)
 
 ### Website Check List
-
-- [x] https://ptwc.weather.gov/ **by N'Ken**
-- [x] https://ec.europa.eu/echo/what/civil-protection/emergency-response-coordination-centre-ercc_en **by N'Ken**
-- [ ] https://www.fema.gov/
-- [ ] http://DFES.WA.GOV.AU
-- [ ] http://floodlist.com
-- [ ] http://pnsn.org
-- [ ] http://geonet.org.nz
-- [ ] http://sms-tsunami-warning.com
-- [ ] https://www.jma.go.jp/jma/en/Activities/eew.html
-- [ ] https://www.skywarn.org/news/
-- [ ] https://www.nhc.noaa.gov/
-- [ ] https://emergency.cdc.gov/han/index.asp
-- [ ] http://www.ndwc.go.th/
+*(abbreviation) WebURL*
+- [x] (ptwc)        https://ptwc.weather.gov/ **by N'Ken**
+- [x] (ec) https://ec.europa.eu/echo/what/civil-protection/emergency-response-coordination-centre-ercc_en **by N'Ken**
+- [ ] (fema)        https://www.fema.gov/
+- [ ] (dfes)        http://DFES.WA.GOV.AU
+- [ ] (floodlist)   http://floodlist.com
+- [ ] (pnsn)        http://pnsn.org
+- [ ] (geonet)      http://geonet.org.nz
+- [ ] (sms-tsunami) http://sms-tsunami-warning.com
+- [ ] (jma)         https://www.jma.go.jp/jma/en/Activities/eew.html
+- [ ] (skywarn)     https://www.skywarn.org/news/
+- [ ] (nhc)         https://www.nhc.noaa.gov/
+- [ ] (emergency-cdc) https://emergency.cdc.gov/han/index.asp
+- [ ] (ndwc)        http://www.ndwc.go.th/
 
 ### api เกี่ยวกับ disaster
 
@@ -34,9 +34,14 @@ python main.py
 ```
 According to main.py example code 
 ```
-ptwc.start_crawl(cnt=2, write_file=True, show_output=True) # 2 record, write json file, show crawling output
+# import ptwc (website abbreviation)
+# import ec (website abbreviation)
+
+ptwc.start_crawl(cnt=2, write_file=True, 
+show_output=True) # 2 record, write json file, show crawling output
+twc.start_crawl(write_file=True, show_output=True) # write json file, show crawling output
 ```
-result will be only first record of the web page.
+
 
 **Example output** (*ptwc* website)
 ```
