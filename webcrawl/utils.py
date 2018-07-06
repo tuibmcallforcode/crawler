@@ -8,7 +8,7 @@ HEADERS = {
 
 WEBSITES = {
     'ptwc': 'https://ptwc.weather.gov',
-    'ec': 'https://ec.europa.eu/echo/what/civil-protection/emergency-response-coordination-centre-ercc_en',
+    'ec': 'https://ec.europa.eu',
     'fema': 'https://www.fema.gov',
     'dfes': 'http://DFES.WA.GOV.AU',
     'floodlist': 'http://floodlist.com',
@@ -43,4 +43,3 @@ def print_dict(datum_dict):
 def write_json_file(website, dict_list):
     with open('./data/'+website+'_data.json', 'w') as outfile:
         json.dump(dict_list, outfile)
-    

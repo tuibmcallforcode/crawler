@@ -2,4 +2,6 @@ import sys
 sys.path.append('./webcrawl')
 
 import ptwc
-ptwc.start_crawl(write_file=True)
+import ec
+# ptwc.start_crawl(write_file=True, show_output=True)
+ec.start_crawl(write_file=True, show_output=True)
