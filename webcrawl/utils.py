@@ -26,6 +26,7 @@ WEBSITES = {
 def replace_all(text, replace_dict):
     for key in replace_dict:
         text = text.replace(key, replace_dict[key])
+        text = text.strip()
     return text
 
 def crawl_page(url):
