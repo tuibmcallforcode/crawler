@@ -24,6 +24,10 @@ Ken is going to craw some website ;)
 - [ ] https://reliefweb.int/updates 
 
 ### How to run this project
+**Docker**
+- [ ] Dockerfile, docker-compose.yml
+
+**Manually**
 ```
 pip install -r requirements.txt
 python main.py

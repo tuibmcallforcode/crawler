@@ -1,8 +1,17 @@
-__pycache__
+# MacOS seeds
 .DS_Store
+
+# Python seeds
+__pycache__
+
+# Nodejs seeds
 node_modules
 package-lock.json
 yarn.lock
+
+# VScode seeds
 .vs_code
+
+# Testing seeds
 tmp.js
 test.py
