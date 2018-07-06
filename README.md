@@ -30,7 +30,7 @@ python main.py
 ```
 According to main.py example code 
 ```
-ptwc.start_crawl(1) # 1 record
+ptwc.start_crawl(cnt=2, write_file=True, show_output=True) # 2 record, write json file, show crawling output
 ```
 result will be only first record of the web page.
 
