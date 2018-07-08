@@ -18,6 +18,7 @@ Ken is going to craw some website ;)
 - [ ] (nhc)         https://www.nhc.noaa.gov/
 - [ ] (emergency-cdc) https://emergency.cdc.gov/han/index.asp
 - [ ] (ndwc)        http://www.ndwc.go.th/
+- [ ] https://www.pdc.org
 
 ### api เกี่ยวกับ disaster
 
