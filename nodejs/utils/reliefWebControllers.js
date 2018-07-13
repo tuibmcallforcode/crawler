@@ -1,13 +1,16 @@
 import request from "request";
 import fs      from "fs";
 import path    from "path";
+import debug   from "debug";
+const error = debug("app:error");
+const log = debug("app:main");
 
 const API_URL = "https://api.reliefweb.int/v1/reports";
 const FILE_PATH = path.join(__dirname, "..", "data/relief_data.json");
 
 const writeToFile = ({filePath=FILE_PATH, data="", flag="w"}) => {
     return new Promise((resolve, reject) => { 
-        fs.appendFile(filePath, data, { flag: flag }, err => {
+        fs.writeFile(filePath, data, { flag: flag }, err => {
             if(err) reject(err);
             else    resolve();
         });
@@ -30,7 +33,7 @@ const fetchRelieftWeb = async () => {
     const options = {
         "offset" :  0,
         "profile":  "list",
-        "limit"  :  5,
+        "limit"  :  100,
         "sort"   :  ["date:desc"]
     }
     const allReportQuery = {
@@ -41,18 +44,30 @@ const fetchRelieftWeb = async () => {
 
     try {
         const reportsResult = await _fetch(allReportQuery);
-        reportsResult.data.forEach(async datum => {
+        const length = reportsResult.data.length;
+        log(`length ${length}`);
+
+        let dataToWrite = [];
+
+        reportsResult.data.forEach(async (datum, i) => {
             const datumDetails = await _fetch({url: datum.href});
             datum.fields = {
                 ...datum.fields,
                 ...datumDetails.data[0].fields
             };
 
-            await writeToFile({data: JSON.stringify(datum)});
+            dataToWrite.push(datum);
+
+            if(length-1 === i) {
+                log(`data length ${dataToWrite.length}`);
+                log('write');
+
+                await writeToFile({data: JSON.stringify(dataToWrite)});
+            }
         });
 
     } catch (e) {
-        console.log(`err: ${e}`);
+        error(`err: ${e}`);
     }
 
 }
