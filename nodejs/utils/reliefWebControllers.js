@@ -29,47 +29,46 @@ const _fetch = ({url=API_URL, method="GET", body={}}) => {
     })
 }
 
-const fetchRelieftWeb = async () => {
-    const options = {
-        "offset" :  0,
-        "profile":  "list",
-        "limit"  :  100,
-        "sort"   :  ["date:desc"]
-    }
-    const allReportQuery = {
-        url: API_URL,
-        method: "POST",
-        body: options
+exports.fetchRelieftWeb = (options=null) => {
+    if(!options) {
+        error("no options found.");
+        return;
     }
 
-    try {
-        const reportsResult = await _fetch(allReportQuery);
-        const length = reportsResult.data.length;
-        log(`length ${length}`);
-
-        let dataToWrite = [];
-
-        reportsResult.data.forEach(async (datum, i) => {
-            const datumDetails = await _fetch({url: datum.href});
-            datum.fields = {
-                ...datum.fields,
-                ...datumDetails.data[0].fields
-            };
-
-            dataToWrite.push(datum);
-
-            if(length-1 === i) {
-                log(`data length ${dataToWrite.length}`);
-                log('write');
-
-                await writeToFile({data: JSON.stringify(dataToWrite)});
-            }
-        });
-
-    } catch (e) {
-        error(`err: ${e}`);
-    }
-
+    return new Promise(async (resolve, reject) => {
+        const allReportQuery = {
+            url: API_URL,
+            method: "POST",
+            body: options
+        }
+    
+        try {
+            const reportsResult = await _fetch(allReportQuery);
+            const length = reportsResult.data.length;
+            log(`length ${length}`);
+    
+            let dataToWrite = [];
+    
+            reportsResult.data.forEach(async (datum, i) => {
+                const datumDetails = await _fetch({url: datum.href});
+                datum.fields = {
+                    ...datum.fields,
+                    ...datumDetails.data[0].fields
+                };
+    
+                dataToWrite.push(datum);
+    
+                if(length-1 === i) {
+                    log(`data length ${dataToWrite.length}`);
+                    
+                    await writeToFile({data: JSON.stringify(dataToWrite)});
+                    resolve("write file finished.");
+                }
+            });
+    
+        } catch (e) {
+            error(`err: ${e}`);
+            reject(e);
+        }
+    });
 }
-
-fetchRelieftWeb();
